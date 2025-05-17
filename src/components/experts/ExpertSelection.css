@@ -1,0 +1,37 @@
+.expert-selection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.suggested-combinations {
+  background-color: rgba(255, 255, 255, 0.03);
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.combinations-list {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.combination-button {
+  background-color: var(--color-amber);
+  color: var(--color-navy);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.experts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.selection-info {
+  text-align: center;
+  font-style: italic;
+  opacity: 0.8;
+}

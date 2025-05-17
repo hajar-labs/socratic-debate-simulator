@@ -1,0 +1,387 @@
+/* ArgumentVisualization.css - Styling for dynamic argument mind-map visualization */
+
+:root {
+  --deep-navy: #1A2B47;
+  --pearl-white: #F1F2F6;
+  --amber-accent: #F39C12;
+  --sage-green: #7CB342;
+  --coral-red: #E74C3C;
+  --light-navy: #2C3E50;
+  --soft-gray: #ECF0F1;
+  --neutral-blue: #3498DB;
+  --dark-text: #2C3E50;
+  --light-text: #F8F9FA;
+  --factual-color: #3498DB;
+  --interpretive-color: #9B59B6; 
+  --predictive-color: #F39C12;
+  --normative-color: #E67E22;
+  --transition-standard: 400ms ease-in-out;
+}
+
+.argument-visualization {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Argument nodes */
+.argument-node {
+  position: absolute;
+  background-color: rgba(241, 242, 246, 0.95);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 280px;
+  transition: all var(--transition-standard);
+  cursor: pointer;
+  z-index: 5;
+  border-left: 4px solid var(--factual-color);
+}
+
+.argument-node:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+.argument-node.active {
+  box-shadow: 0 0 0 2px var(--amber-accent), 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.argument-node.factual {
+  border-left-color: var(--factual-color);
+}
+
+.argument-node.interpretive {
+  border-left-color: var(--interpretive-color);
+}
+
+.argument-node.predictive {
+  border-left-color: var(--predictive-color);
+}
+
+.argument-node.normative {
+  border-left-color: var(--normative-color);
+}
+
+.argument-type-indicator {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--pearl-white);
+}
+
+.argument-type-indicator.factual {
+  background-color: var(--factual-color);
+}
+
+.argument-type-indicator.interpretive {
+  background-color: var(--interpretive-color);
+}
+
+.argument-type-indicator.predictive {
+  background-color: var(--predictive-color);
+}
+
+.argument-type-indicator.normative {
+  background-color: var(--normative-color);
+}
+
+.argument-content {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--dark-text);
+}
+
+.argument-attribution {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--light-navy);
+  opacity: 0.8;
+  font-style: italic;
+}
+
+.evidence-indicator {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.7rem;
+  margin-top: 0.5rem;
+  color: var(--amber-accent);
+  cursor: pointer;
+}
+
+.evidence-indicator:hover {
+  text-decoration: underline;
+}
+
+/* Connection lines */
+.argument-connections {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.connection-line {
+  stroke: var(--light-navy);
+  stroke-width: 1.5;
+  stroke-opacity: 0.5;
+  fill: none;
+}
+
+.connection-line.support {
+  stroke: var(--sage-green);
+  stroke-opacity: 0.7;
+}
+
+.connection-line.oppose {
+  stroke: var(--coral-red);
+  stroke-opacity: 0.7;
+  stroke-dasharray: 4, 4;
+}
+
+.connection-label {
+  font-size: 10px;
+  fill: var(--light-navy);
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+/* Size variations for emphasis */
+.argument-node.size-small {
+  padding: 0.5rem 0.75rem;
+  max-width: 200px;
+  font-size: 0.85rem;
+}
+
+.argument-node.size-large {
+  padding: 1rem 1.25rem;
+  max-width: 320px;
+  font-size: 1rem;
+  z-index: 6;
+}
+
+.argument-node.size-xlarge {
+  padding: 1.25rem 1.5rem;
+  max-width: 350px;
+  font-size: 1.05rem;
+  z-index: 7;
+}
+
+/* Controls for argument visualization */
+.visualization-controls {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 20;
+}
+
+.visualization-control {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--pearl-white);
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--deep-navy);
+}
+
+.visualization-control:hover {
+  background-color: var(--soft-gray);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.visualization-control:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Legend */
+.argument-legend {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: rgba(241, 242, 246, 0.9);
+  border-radius: 6px;
+  padding: 0.75rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  font-size: 0.8rem;
+  z-index: 15;
+  max-width: 180px;
+}
+
+.legend-title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--dark-text);
+}
+
+.legend-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+.legend-color.factual {
+  background-color: var(--factual-color);
+}
+
+.legend-color.interpretive {
+  background-color: var(--interpretive-color);
+}
+
+.legend-color.predictive {
+  background-color: var(--predictive-color);
+}
+
+.legend-color.normative {
+  background-color: var(--normative-color);
+}
+
+.legend-label {
+  color: var(--dark-text);
+  font-size: 0.75rem;
+}
+
+/* Animations */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.argument-node.highlighted {
+  animation: pulse 1.5s infinite;
+  z-index: 10;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.argument-node.new {
+  animation: appear 0.5s forwards;
+}
+
+/* Focus mode */
+.argument-visualization.focus-mode .argument-node:not(.active):not(.related) {
+  opacity: 0.4;
+  filter: grayscale(50%);
+}
+
+.argument-visualization.focus-mode .connection-line:not(.active) {
+  stroke-opacity: 0.2;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 1200px) {
+  .argument-node {
+    max-width: 240px;
+  }
+  
+  .argument-node.size-large {
+    max-width: 280px;
+  }
+  
+  .argument-node.size-xlarge {
+    max-width: 300px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .argument-node {
+    max-width: 200px;
+    padding: 0.6rem 0.8rem;
+  }
+  
+  .argument-content {
+    font-size: 0.8rem;
+  }
+  
+  .argument-node.size-large,
+  .argument-node.size-xlarge {
+    max-width: 240px;
+    padding: 0.75rem 1rem;
+  }
+  
+  .visualization-controls {
+    bottom: 0.5rem;
+    right: 0.5rem;
+  }
+  
+  .visualization-control {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+  
+  .argument-legend {
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.5rem;
+    max-width: 150px;
+  }
+}
+
+/* Claim node tooltip */
+.node-tooltip {
+  position: absolute;
+  background-color: var(--deep-navy);
+  color: var(--pearl-white);
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 100;
+}
+
+.node-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--deep-navy) transparent transparent transparent;
+}
+
+.argument-node:hover .node-tooltip {
+  opacity: 1;
+}

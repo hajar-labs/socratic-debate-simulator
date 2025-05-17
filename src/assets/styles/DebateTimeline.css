@@ -1,0 +1,197 @@
+/* DebateTimeline.css - Styling for the horizontal debate progression timeline */
+
+:root {
+  --deep-navy: #1A2B47;
+  --pearl-white: #F1F2F6;
+  --amber-accent: #F39C12;
+  --sage-green: #7CB342;
+  --coral-red: #E74C3C;
+  --light-navy: #2C3E50;
+  --soft-gray: #ECF0F1;
+  --timeline-height: 60px;
+  --transition-standard: 400ms ease-in-out;
+}
+
+.debate-timeline {
+  position: relative;
+  width: 100%;
+  height: var(--timeline-height);
+  background-color: var(--light-navy);
+  border-radius: 8px;
+  margin: 1.5rem 0;
+  padding: 0 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-track {
+  position: relative;
+  height: 6px;
+  background-color: var(--soft-gray);
+  border-radius: 3px;
+  margin-top: calc(var(--timeline-height) / 2 - 3px);
+}
+
+.timeline-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: var(--amber-accent);
+  border-radius: 3px;
+  transition: width var(--transition-standard);
+}
+
+.timeline-markers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.timeline-marker {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--pearl-white);
+  border: 2px solid var(--deep-navy);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 5;
+}
+
+.timeline-marker:hover {
+  transform: translateY(-50%) scale(1.2);
+}
+
+.timeline-marker.active {
+  background-color: var(--amber-accent);
+  border-color: var(--amber-accent);
+  box-shadow: 0 0 0 4px rgba(243, 156, 18, 0.3);
+}
+
+.timeline-marker.agreement {
+  background-color: var(--sage-green);
+  border-color: var(--sage-green);
+}
+
+.timeline-marker.disagreement {
+  background-color: var(--coral-red);
+  border-color: var(--coral-red);
+}
+
+.timeline-marker-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--deep-navy);
+  color: var(--pearl-white);
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  margin-bottom: 8px;
+  z-index: 10;
+  font-family: 'Inter', sans-serif;
+}
+
+.timeline-marker-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--deep-navy) transparent transparent transparent;
+}
+
+.timeline-marker:hover .timeline-marker-tooltip {
+  opacity: 1;
+}
+
+.timeline-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+}
+
+.timeline-playback-button {
+  background-color: var(--deep-navy);
+  color: var(--pearl-white);
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.timeline-playback-button:hover {
+  background-color: var(--amber-accent);
+}
+
+.timeline-timestamps {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: var(--pearl-white);
+  padding: 0 10px;
+  opacity: 0.8;
+  font-family: 'Roboto Mono', monospace;
+}
+
+/* Jump-to-point functionality */
+.timeline-jump-indicator {
+  position: absolute;
+  top: -5px;
+  width: 2px;
+  height: 16px;
+  background-color: var(--amber-accent);
+  border-radius: 1px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.timeline-track:hover .timeline-jump-indicator {
+  opacity: 1;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .debate-timeline {
+    height: 50px;
+    margin: 1rem 0;
+  }
+  
+  .timeline-marker {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .timeline-timestamps {
+    font-size: 0.6rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .timeline-timestamps {
+    display: none;
+  }
+}

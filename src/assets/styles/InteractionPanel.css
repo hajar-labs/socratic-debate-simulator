@@ -1,0 +1,403 @@
+/* InteractionPanel.css - Styling for user interaction controls */
+
+:root {
+  --deep-navy: #1A2B47;
+  --pearl-white: #F1F2F6;
+  --amber-accent: #F39C12;
+  --sage-green: #7CB342;
+  --coral-red: #E74C3C;
+  --light-navy: #2C3E50;
+  --soft-gray: #ECF0F1;
+  --neutral-blue: #3498DB;
+  --dark-text: #2C3E50;
+  --light-text: #F8F9FA;
+  --transition-standard: 400ms ease-in-out;
+}
+
+.interaction-panel {
+  position: relative;
+  background-color: var(--pearl-white);
+  border-radius: 10px;
+  padding: 1.25rem;
+  margin-top: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Primary interaction buttons */
+.primary-controls {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.interaction-button {
+  background-color: var(--deep-navy);
+  color: var(--pearl-white);
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 1.25rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.interaction-button:hover {
+  background-color: var(--light-navy);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.interaction-button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.interaction-button-icon {
+  font-size: 1.1rem;
+}
+
+.interaction-button.follow-up {
+  background-color: var(--amber-accent);
+}
+
+.interaction-button.challenge {
+  background-color: var(--coral-red);
+}
+
+.interaction-button.evidence {
+  background-color: var(--sage-green);
+}
+
+.interaction-button.steelman {
+  background-color: var(--neutral-blue);
+}
+
+.interaction-button.new-consideration {
+  background-color: var(--light-navy);
+}
+
+/* Smart suggestions */
+.smart-suggestions {
+  margin-top: 1rem;
+}
+
+.suggestions-title {
+  font-size: 0.85rem;
+  color: var(--dark-text);
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.suggestions-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.suggestion-chip {
+  background-color: var(--soft-gray);
+  border: 1px solid rgba(44, 62, 80, 0.15);
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--dark-text);
+}
+
+.suggestion-chip:hover {
+  background-color: rgba(243, 156, 18, 0.1);
+  border-color: var(--amber-accent);
+  color: var(--amber-accent);
+}
+
+/* Debate parameter controls */
+.parameter-controls {
+  margin-top: 2rem;
+  border-top: 1px solid rgba(44, 62, 80, 0.1);
+  padding-top: 1.25rem;
+}
+
+.parameters-title {
+  font-size: 0.9rem;
+  color: var(--dark-text);
+  margin-bottom: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.parameters-toggle {
+  background: none;
+  border: none;
+  color: var(--light-navy);
+  padding: 0;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.parameters-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--transition-standard);
+}
+
+.parameters-content.expanded {
+  max-height: 400px;
+}
+
+.parameter-group {
+  margin-bottom: 1.25rem;
+}
+
+.parameter-label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--dark-text);
+  margin-bottom: 0.5rem;
+}
+
+.parameter-slider-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.parameter-slider {
+  flex-grow: 1;
+  height: 5px;
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: var(--soft-gray);
+  border-radius: 5px;
+  outline: none;
+}
+
+.parameter-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--amber-accent);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.parameter-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.parameter-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--amber-accent);
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.parameter-slider::-moz-range-thumb:hover {
+  transform: scale(1.2);
+}
+
+.parameter-value-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: var(--light-navy);
+  opacity: 0.8;
+  margin-top: 0.5rem;
+}
+
+.language-level-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.language-level-button {
+  background-color: var(--soft-gray);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex: 1;
+  text-align: center;
+}
+
+.language-level-button:hover {
+  background-color: rgba(44, 62, 80, 0.05);
+}
+
+.language-level-button.active {
+  background-color: rgba(243, 156, 18, 0.1);
+  border-color: var(--amber-accent);
+  color: var(--amber-accent);
+}
+
+.emphasis-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.emphasis-button {
+  background-color: var(--soft-gray);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex: 1;
+  text-align: center;
+}
+
+.emphasis-button:hover {
+  background-color: rgba(44, 62, 80, 0.05);
+}
+
+.emphasis-button.active {
+  background-color: rgba(243, 156, 18, 0.1);
+  border-color: var(--amber-accent);
+  color: var(--amber-accent);
+}
+
+.time-constraint-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.time-constraint-button {
+  background-color: var(--soft-gray);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex: 1;
+  text-align: center;
+}
+
+.time-constraint-button:hover {
+  background-color: rgba(44, 62, 80, 0.05);
+}
+
+.time-constraint-button.active {
+  background-color: rgba(243, 156, 18, 0.1);
+  border-color: var(--amber-accent);
+  color: var(--amber-accent);
+}
+
+/* Follow-up textarea */
+.follow-up-input {
+  margin-top: 1.25rem;
+  border-top: 1px solid rgba(44, 62, 80, 0.1);
+  padding-top: 1.25rem;
+  display: none;
+}
+
+.follow-up-input.active {
+  display: block;
+}
+
+.follow-up-textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 1rem;
+  border: 1px solid rgba(44, 62, 80, 0.2);
+  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  resize: vertical;
+  transition: border-color 0.2s ease;
+}
+
+.follow-up-textarea:focus {
+  outline: none;
+  border-color: var(--amber-accent);
+}
+
+.follow-up-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.follow-up-cancel {
+  background: none;
+  border: none;
+  color: var(--light-navy);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.follow-up-cancel:hover {
+  color: var(--coral-red);
+}
+
+.follow-up-submit {
+  background-color: var(--amber-accent);
+  color: var(--pearl-white);
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.follow-up-submit:hover {
+  background-color: #E67E22;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.follow-up-submit:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .primary-controls {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .interaction-button {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .language-level-controls,
+  .emphasis-controls,
+  .time-constraint-controls {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .interaction-panel {
+    padding: 1rem;
+  }
+  
+  .suggestion-chip {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.75rem;
+  }
+}

@@ -1,0 +1,54 @@
+.home-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.tagline {
+  font-size: 1.5rem;
+  opacity: 0.8;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+section {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 2rem;
+}
+
+.start-debate-button {
+  background-color: var(--color-amber);
+  color: var(--color-navy);
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  align-self: center;
+  margin-top: 2rem;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.start-debate-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  background-color: #ffaa30;
+}
+
+.start-debate-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
